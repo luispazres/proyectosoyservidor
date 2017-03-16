@@ -82,5 +82,56 @@
       </td>
     </tr>
   </table>
-
 </form>
+
+<script type="text/javascript">
+function getMonth(date) {
+  var month = date.getMonth() + 1;
+  return month < 10 ? '0' + month : '' + month;
+}
+
+$('#ContratoFechaInicio').change(function(){
+  var vigencia=$("#txtVigencia").val();
+  var vigenciaMeses;
+  switch (vigencia) {
+    case "1":
+      vigenciaMeses=3;
+      break;
+    case "2":
+      vigenciaMeses=6;
+      break;
+    case "3":
+      vigenciaMeses=9;
+      break;
+    case "4":
+      vigenciaMeses=12;
+      break;
+    case "5":
+      vigenciaMeses=18;
+      break;
+    case "6":
+      vigenciaMeses=24;
+      break;
+  }
+
+  var fechaInicial=$("#ContratoFechaInicio").val();
+  var date = new Date();
+  var dateArray = fechaInicial.split("-");
+  date.setFullYear(parseInt(dateArray[0]));
+  date.setMonth(parseInt(dateArray[1])-1);
+  date.setDate(parseInt(dateArray[2]));
+  var fechaFinal=new Date();
+  fechaFinal.setFullYear(date.getFullYear());
+  fechaFinal.setDate(date.getDate());
+  fechaFinal.setMonth(date.getMonth()+parseInt(vigenciaMeses));
+
+  var anio = String(fechaFinal.getFullYear());
+  var month= String(getMonth(fechaFinal));
+  var dia= String(fechaFinal.getDate());
+  var res= anio.concat("-",month,"-",dia);
+
+  $("#ContratoFechaFinal").val(res);
+
+  console.log(res);
+});
+</script>

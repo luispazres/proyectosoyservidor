@@ -152,3 +152,46 @@
           }
           return time.replace(/(am|pm)/, '');
       }
+
+      <script>
+          $("#ActividadCantidadPendiente").prop('disabled', true);
+          $("#btnAgregarCantidad").click(function () {
+              var cantidad = $("#ActividadCantidad").val();
+              var finalizadas = $("#ActividadCantidadFinalizada").val();
+              var pendientes = $("#ActividadCantidadPendiente").val();
+              if (pendientes.length == 0) {
+                  pendientes = 0;
+              }
+              var total = parseInt(finalizadas) + parseInt(pendientes);
+
+              if (total > cantidad || total < cantidad) {
+                  alert("La suma de las actividades finalizadas y pendientes no debe ser mayor ni menor que el total de actividades.");
+              } else if (cantidad <= 0 || finalizadas < 0 || pendientes < 0) {
+                  alert('Ninguno de los valor debe ser menor o igual a cero.');
+              } else {
+                  $("#actividadesDiariarForm").submit();
+              }
+          });
+
+          $("#ActividadCantidad").change(function () {
+              $("#ActividadCantidadFinalizada").val("");
+              $("#ActividadCantidadFinalizada").prop('disabled', false);
+              $("#ActividadCantidadFinalizada").prop('max', $("#ActividadCantidad").val());
+          });
+
+          $("#ActividadCantidadFinalizada").change(function () {
+              var cantidad = $("#ActividadCantidad").val();
+              var finalizadas = $("#ActividadCantidadFinalizada").val();
+              var maximo = cantidad - finalizadas;
+              $("#ActividadCantidadPendiente").prop('disabled', false);
+              $("#ActividadCantidadPendiente").val(maximo);
+
+          });
+
+          $("#ActividadCantidadPendiente").change(function () {
+              var cantidad = $("#ActividadCantidad").val();
+              var finalizadas = $("#ActividadCantidadFinalizada").val();
+              var maximo = cantidad - finalizadas;
+              $("#ActividadCantidadPendiente").prop('max', maximo);
+          });
+      </script>

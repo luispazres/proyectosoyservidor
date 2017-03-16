@@ -72,6 +72,9 @@
       case "restablecerContrasena":
                  require_once("controllers/restablecerContrasena.control.php");
                  break;
+      case "layoutalt":
+                 require_once("controllers/layoutalt.control.php");
+                 break;
         default:
             require_once("controllers/error.control.php");
 
