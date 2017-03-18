@@ -16,8 +16,8 @@
   function run(){
 
     addCssRef("public/css/home.css");
-  
-    renderizar("home", array('dia' => $dia));
+
+    renderizar("home", array());
   }
 
   run();
