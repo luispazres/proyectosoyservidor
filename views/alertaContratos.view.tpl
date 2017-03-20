@@ -22,28 +22,6 @@
   </tr>
     </thead>
     <tbody>
-
-  {{foreach tblcontratos}}
-
-  <form method="post" action="index.php?page=alertaContratos" >
-      <tr>
-        <td>
-          {{ContratoCodigo}}
-        </td>
-        <td>
-          {{ContratoFechaInicio}}
-        </td>
-        <td>
-          {{ContratoFechaFinal}}
-        </td>
-        <td>
-          {{NombreEmpresa}}
-        </td>
-        <td>
-          {{TipodeServicio}}
-        </td>
-      </tr>
-        </form>
-  {{endfor tblcontratos}}
+      {{td}}
     </tbody>
 </table>

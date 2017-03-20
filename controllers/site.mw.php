@@ -10,9 +10,6 @@ require_once("clases/class.pop3.php");
 require_once("clases/class.phpmaileroauthgoogle.php");
 function site_init(){
 
-  $date1 = new DateTime("2007-03-24");
-  $date2 = new DateTime("2009-06-26");
-
   $contratos="";
   $contratosAVencer = array( );
   $contratosVencidos = array( );
@@ -41,22 +38,24 @@ function site_init(){
   $mes = date('m',$convertedDate);
   $anio= date('Y',$convertedDate);
 
-  $interval = $vencimientoObjeto->diff($hoyObjeto);
+  $interval = $hoyObjeto->diff($vencimientoObjeto);
+
+    echo "Dias: ".$interval->format('%R%a días')." || ";
 
   if ($key["ContratoFechaFinal"]<=$hoy) {
     $contratosVencidos[]=$key;
   }
 
-  if ($interval->days==13) {
+  if ($interval->days==14) {
     $contratosAVencer[]=$key;
   }
 
-  if ($interval->days==28) {
+  if ($interval->days==29) {
 
   $contratosAVencer[]=$key;
   }
 
-  if ($interval->days==5) {
+  if ($interval->days==6) {
 
   $contratosAVencer[]=$key;
   }
