@@ -75,6 +75,9 @@
       case "layoutalt":
                  require_once("controllers/layoutalt.control.php");
                  break;
+      case "alertaContratos":
+                  require_once("controllers/alertaContratos.control.php");
+                  break;
         default:
             require_once("controllers/error.control.php");
 

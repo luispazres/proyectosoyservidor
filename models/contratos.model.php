@@ -17,6 +17,15 @@
 
        }
 
+       /*Vista de todos los contratos*/
+          function obtenerContratosAlerta(){
+          $contratos = array();
+          $sqlstr = sprintf("SELECT  c.ContratoCodigo,e.EmpresaNombre 'NombreEmpresa',c.ContratoFechaInicio,c.ContratoFechaFinal, s.ServicioNombre 'TipodeServicio'
+          from tblempresa as e, tblcontratos as c ,tblservicios as s  where e.EmpresaCodigo= c.EmpresaCodigo and s.ServicioCodigo=c.ServicioCodigo;");
+          $contratos = obtenerRegistros($sqlstr);
+          return $contratos;
+          }
+
      /*Obtener vigencias de contratos*/
      function obtenerVigencias(){
      $servicio = array();
@@ -28,7 +37,7 @@
 
     function obtenerTodosLosContratos(){
     $servicio = array();
-    $sqlstr = sprintf("SELECT * FROM tblcontratos ");
+    $sqlstr = sprintf("SELECT c.ContratoCodigo, c.ContratoFechaInicio, c.ContratoFechaFinal, c.VigenciaCodigo, c.EmpresaCodigo, c.ServicioCodigo, c.ContratoValor, e.EmpresaNombre, s.ServicioNombre FROM tblcontratos as c, tblempresa as e, tblservicios as s where c.EmpresaCodigo=e.EmpresaCodigo and c.ServicioCodigo=s.ServicioCodigo ");
     $servicio = obtenerRegistros($sqlstr);
     return $servicio;
 
