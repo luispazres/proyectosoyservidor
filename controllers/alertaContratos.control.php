@@ -23,7 +23,7 @@
    $interval = $vencimientoObjeto->diff($hoyObjeto);
 
    if ($key["ContratoFechaFinal"]<=$hoy) {
-     $td.="<tr bgcolor='#bb1313'>
+     $td.="<tr class='danger'>
        <td>
          ".$key["ContratoCodigo"]."
        </td>
@@ -42,8 +42,8 @@
      </tr>";
    }
 
-   if ($interval->days==14) {
-     $td.="<tr bgcolor='#f0f517'>
+   if ($interval->days==13) {
+     $td.="<tr class='warning'>
        <td>
          ".$key["ContratoCodigo"]."
        </td>
@@ -62,9 +62,9 @@
      </tr>";
    }
 
-   if ($interval->days==29) {
+   if ($interval->days==28) {
 
-     $td.="<tr bgcolor='#a7f659'>
+     $td.="<tr class='success'>
        <td>
          ".$key["ContratoCodigo"]."
        </td>
@@ -83,9 +83,9 @@
      </tr>";
    }
 
-   if ($interval->days==6) {
+   if ($interval->days==5) {
 
-     $td.="<tr bgcolor='#df9e30'>
+     $td.="<tr class='info'>
        <td>
          ".$key["ContratoCodigo"]."
        </td>

@@ -1,5 +1,4 @@
 <?php
-
   require_once("libs/template_engine.php");
   require_once("models/registro.model.php");
 

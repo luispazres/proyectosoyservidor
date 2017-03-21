@@ -2,10 +2,8 @@
   <section id="intro1">
 <h1>Nuevo Contrato</h1></br>
 <section class="container">
-  <h1>{{probando}}
-
-</h1>
-              <form action="index.php?page=contrato"  method="post" class="tm-contact-form" enctype="multipart/form-data">
+  <h1>{{alerta}}</h1>
+              <form action="index.php?page=contrato&EmpresaCodigo={{datos}}"  method="post" class="tm-contact-form" enctype="multipart/form-data">
                 <input type="hidden" name="contratoCodigo" value="{{ContratoCodigo}}">
                 <label> EmpresaCodigo:</label>
                 <input type="text" name="txtCodEmpresa" id="txtCodEmpresa" value="{{datos}}" >

@@ -55,19 +55,20 @@ class Multiupload
 
                           $resultado=0;
                         $resultado=  ejecutarNonQuery($strsql);
+                        return $resultado;
 
-                        echo "subida correctamente";
+                      //  echo '<script language="javascript">alert("Archivo subido correctamente.");</script>';
                         //aqui podemos procesar info de la bd referente a este archivo
                     }
                 //si la extension no es una de las permitidas
                 }else{
-                    echo "la extension no esta permitida";
+                  //echo '<script language="javascript">alert("Extension del archivo no permitida");</script>';
                 }
             //si ese input file no ha sido cargado con un archivo
             }else{
-                echo "sin imagen";
+                //echo '<script language="javascript">alert("Debe seleccionar un archivo.");</script>';
             }
-            echo "<br />";
+            //echo "<br />";
             //en cada pasada por el loop incrementamos i para acceder al siguiente archivo
             $i++;
         }
@@ -115,5 +116,4 @@ class Multiupload
         return $archivo;
     }
 }
-
  ?>

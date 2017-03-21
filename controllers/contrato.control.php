@@ -22,9 +22,12 @@ ini_set('display_errors', '1');
     $vigencia= obtenerVigencias();
     $contratoId="";
     $codigoEmpresa="";
-    $codigoEmpresa=$_GET["EmpresaCodigo"];
+    $codigoEmpresa="";
+    $alerta="";
 
-
+    if (isset($_GET["EmpresaCodigo"])) {
+      $codigoEmpresa=$_GET["EmpresaCodigo"];
+    }
 
     if(isset($_POST["btnGuardar"])){
       $datos["txtCodEmpresa"]=$_POST["txtCodEmpresa"];
@@ -37,17 +40,24 @@ ini_set('display_errors', '1');
       $contratoId=InsertarContratos( $datos["fechaInicial"],  $datos["fechaVencimiento"],$datos["txtVigencia"],$datos["txtValor"],$datos["txtCodEmpresa"],$datos["txtServicio"]);
       $files = $_FILES['userfile']['name'];
      //creamos una nueva instancia de la clase multiupload
-     $upload = new Multiupload();
+      $upload = new Multiupload();
     //llamamos a la funcion upFiles y le pasamos el array de campos file del formulario
      $isUpload = $upload->upFiles($files,$contratoId);
+     if ($isUpload<1) {
+
+       borrarContrato($contratoId);
+       $alerta="<script language='javascript'>alert('Error al subir el archivo.');</script>";
+
+     }else {
        header("Location:index.php?page=listadoEmpresa");
      }
+    }
 
     if(isset($_POST["btnCancelar"])){
         header("Location:index.php?page=listadoEmpresa");
     }
 
-      renderizar("contrato", array("servicio"=>$servicio,"vigencia"=>$vigencia,"datos"=> $codigoEmpresa));
+      renderizar("contrato", array("servicio"=>$servicio,"vigencia"=>$vigencia,"datos"=> $codigoEmpresa,"alerta"=>$alerta));
   }
   run();
 

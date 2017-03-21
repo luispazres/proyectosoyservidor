@@ -40,22 +40,22 @@ function site_init(){
 
   $interval = $hoyObjeto->diff($vencimientoObjeto);
 
-    echo "Dias: ".$interval->format('%R%a días')." || ";
+  echo "Dias: ".$interval->format('%R%a días')." || ";
 
   if ($key["ContratoFechaFinal"]<=$hoy) {
     $contratosVencidos[]=$key;
   }
 
-  if ($interval->days==14) {
+  if ($interval->days==13) {
     $contratosAVencer[]=$key;
   }
 
-  if ($interval->days==29) {
+  if ($interval->days==28) {
 
   $contratosAVencer[]=$key;
   }
 
-  if ($interval->days==6) {
+  if ($interval->days==5) {
 
   $contratosAVencer[]=$key;
   }
@@ -229,38 +229,66 @@ insertarAlerta($alert);
 
 }
 
+if ($Session["rol"]==1) {
+  $navbar="<nav class='navbar navbar-default'>
+<div class='container-fluid'>
+  <div class='navbar-header'>
+    <a class='navbar-brand' href='#'>
+      <img width='15%' alt='Brand' src='https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAXaAAAAJDQ4YTA0ZWNhLWJjMDItNDdiOS05MjI3LTUzNjYyMGJlODE1Nw.png'>
+    </a>
+    <div class='btn-group dropdown dropdown-notifications sw-open'>
+    <button class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
+    <i data-count='".$cont."' class='glyphicon glyphicon-bell notification-icon'></i>
+    <span class='caret'></span>
+    </button>
 
+    <div class='dropdown-container'>
+    <div class='dropdown-toolbar'>
+    <div class='dropdown-toolbar-actions'>
+    <a href='#''><i class='glyphicon glyphicon-search'></i> View All</a>
+    </div>
+    <h3 class='dropdown-toolbar-title'>Recent Notifications  (".$cont.")</h3>
+    </div><!-- /dropdown-toolbar -->
 
-
-
-    $navbar="<nav class='navbar navbar-default'>
-  <div class='container-fluid'>
-    <div class='navbar-header'>
-      <a class='navbar-brand' href='#'>
-        <img width='15%' alt='Brand' src='https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAXaAAAAJDQ4YTA0ZWNhLWJjMDItNDdiOS05MjI3LTUzNjYyMGJlODE1Nw.png'>
-      </a>
-      <div class='btn-group dropdown dropdown-notifications sw-open'>
-      <button class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
-      <i data-count='".$cont."' class='glyphicon glyphicon-bell notification-icon'></i>
-      <span class='caret'></span>
-      </button>
-
-      <div class='dropdown-container'>
-      <div class='dropdown-toolbar'>
-      <div class='dropdown-toolbar-actions'>
-      <a href='#''><i class='glyphicon glyphicon-search'></i> View All</a>
-      </div>
-      <h3 class='dropdown-toolbar-title'>Recent Notifications  (".$cont.")</h3>
-      </div><!-- /dropdown-toolbar -->
-
-      <ul class='dropdown-menu notifications'>
-    ".$contratosHeader."
-      </ul>
-      </div>
-      </div>
+    <ul class='dropdown-menu notifications'>
+  ".$contratosHeader."
+    </ul>
+    </div>
     </div>
   </div>
+</div>
 </nav>";
+}else {
+  $navbar="<nav class='navbar navbar-default'>
+<div class='container-fluid'>
+  <div class='navbar-header'>
+    <a class='navbar-brand' href='#'>
+      <img width='15%' alt='Brand' src='https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAXaAAAAJDQ4YTA0ZWNhLWJjMDItNDdiOS05MjI3LTUzNjYyMGJlODE1Nw.png'>
+    </a>
+    <div class='btn-group dropdown dropdown-notifications sw-open'>
+    <button class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
+    <i data-count='".$cont."' class='glyphicon glyphicon-bell notification-icon'></i>
+    <span class='caret'></span>
+    </button>
+
+    <div class='dropdown-container'>
+    <div class='dropdown-toolbar'>
+    <div class='dropdown-toolbar-actions'>
+    <a href='#''><i class='glyphicon glyphicon-search'></i> View All</a>
+    </div>
+    <h3 class='dropdown-toolbar-title'>Recent Notifications  (".$cont.")</h3>
+    </div><!-- /dropdown-toolbar -->
+
+    <ul class='dropdown-menu notifications'>
+  ".$contratosHeader."
+    </ul>
+    </div>
+    </div>
+  </div>
+</div>
+</nav>";
+}
+
     $header="<div class='btn-group dropdown dropdown-notifications sw-open'>
 <button class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
 <i data-count='2' class='glyphicon glyphicon-bell notification-icon'></i>
