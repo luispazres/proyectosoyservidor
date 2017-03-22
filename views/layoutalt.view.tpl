@@ -12,8 +12,11 @@
             <link rel="stylesheet" href="public/css/datatable.min.css" type="text/css">
             <link rel="stylesheet" href="public/css/bootstrap-notifications.css" type="text/css">
             <link rel="stylesheet" href="public/css/bootstrap-dropmenu.css" type="text/css">
-            <script type="text/javascript" src="public/js/datatable.jquery.js"></script>
-            <script type="text/javascript" src="public/js/datatable.js"></script>
+            <link rel="stylesheet" href="public/css/animate.min.css" type="text/css">
+            <link rel="stylesheet" href="public/css/font-awesome.min.css" type="text/css">
+
+
+            
             {{foreach css_ref}}
                 <link rel="stylesheet" href="{{uri}}" />
             {{endfor css_ref}}

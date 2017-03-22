@@ -5,19 +5,25 @@
 
      function run(){
        /* Procesamiento */
-       $data = array();
-       $data["usuarioNombre"] = "";
-       $data["usuarioApellido"] = "";
-       $data["usuarioCorreo"] ="";
 
-       $data["tblusuarios"] = array();
-       $data["tblusuarios"] = obtenerUsuarios(
-                               $data["usuarioNombre"],
-                               $data["usuarioApellido"],
-                               $data["usuarioCorreo"]
-                              );
+       if(mw_estaLogueado()){
+         $data = array();
+         $data["usuarioNombre"] = "";
+         $data["usuarioApellido"] = "";
+         $data["usuarioCorreo"] ="";
 
-       renderizar("usuarios", $data);
+         $data["tblusuarios"] = array();
+         $data["tblusuarios"] = obtenerUsuarios(
+                                 $data["usuarioNombre"],
+                                 $data["usuarioApellido"],
+                                 $data["usuarioCorreo"]
+                                );
+
+         renderizar("usuarios", $data);
+       }else {
+         mw_redirectToLogin("page=login2");
+       }
+
      }
      run();
     ?>

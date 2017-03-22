@@ -55,7 +55,7 @@ function site_init(){
   $contratosAVencer[]=$key;
   }
 
-  if ($interval->days==5) {
+  if ($interval->days==6) {
 
   $contratosAVencer[]=$key;
   }

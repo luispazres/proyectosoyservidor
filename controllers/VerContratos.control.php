@@ -5,32 +5,39 @@
 
 
   function run(){
-   $dataPlantilla = array();
-  $empresaCodigo=$_GET["EmpresaCodigo"];
 
-   $accion=$_GET["mode"];
+    if(mw_estaLogueado()){
+      $dataPlantilla = array();
+     $empresaCodigo=$_GET["EmpresaCodigo"];
 
-   switch ($accion) {
-     case 'DLT':
-       $codigoContrato=$_GET["ContratoCodigo"];
-       borrarContrato($codigoContrato);
-       //redirectWithMessage("Contrato Eliminado ");
-       break;
-      case 'Ver':
+      $accion=$_GET["mode"];
 
-        break;
-     default:
-       # code...
-       break;
+      switch ($accion) {
+        case 'DLT':
+          $codigoContrato=$_GET["ContratoCodigo"];
+          borrarContrato($codigoContrato);
+          //redirectWithMessage("Contrato Eliminado ");
+          break;
+         case 'Ver':
+
+           break;
+        default:
+          # code...
+          break;
+      }
+      //validar
+
+   if(isset($_GET["DocumentoDireccion"])){
+     DescargarArchivo($_GET["DocumentoDireccion"]);
    }
-   //validar
 
-if(isset($_GET["DocumentoDireccion"])){
-  DescargarArchivo($_GET["DocumentoDireccion"]);
-}
+      $dataPlantilla["tblcontratos"] = obtenerContratos($empresaCodigo);
+      renderizar("VerContratos",$dataPlantilla);
+    }else {
+      mw_redirectToLogin("page=login2");
+    }
 
-   $dataPlantilla["tblcontratos"] = obtenerContratos($empresaCodigo);
-   renderizar("VerContratos",$dataPlantilla);
+
   }
   run();
  ?>

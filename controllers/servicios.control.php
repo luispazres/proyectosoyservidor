@@ -4,18 +4,25 @@ ini_set('display_errors', '1');
   require_once("libs/template_engine.php");
   require_once("models/servicios.model.php");
   function run(){
-    $datos = array();
-    $datos["mostrarErrores"] = false;
-    $datos["errores"] = array();
-    $datos["txtNombre"]="";
-    $datos = array();
-    $datos["tblservicios"] = obtenerServicios();
 
-      if (isset($_POST["btnCancelar"])) {
-          header("Location:index.php?page=listadoEmpresa");
-      }
+    if(mw_estaLogueado()){
+      $datos = array();
+      $datos["mostrarErrores"] = false;
+      $datos["errores"] = array();
+      $datos["txtNombre"]="";
+      $datos = array();
+      $datos["tblservicios"] = obtenerServicios();
 
-    renderizar("servicios", $datos);
+        if (isset($_POST["btnCancelar"])) {
+            header("Location:index.php?page=listadoEmpresa");
+        }
+
+      renderizar("servicios", $datos);
+    }else {
+      mw_redirectToLogin("page=login2");
+    }
+
+
 
   }
   run();

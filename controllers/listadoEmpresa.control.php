@@ -5,19 +5,24 @@
 
       function run(){
         /* Procesamiento */
-        $dataPlantilla = array();
-        $dataPlantilla["empresanombre"] = "";
-        $dataPlantilla["empresarepresentante"] = "";
-        $dataPlantilla["empresacomercial"] ="";
 
-          $dataPlantilla["tblempresa"] = array();
-          $dataPlantilla["tblempresa"] = obtenerEmpresa(
-                                              $dataPlantilla["empresanombre"] ,
-                                              $dataPlantilla["empresarepresentante"] ,
-                                              $dataPlantilla["empresacomercial"]
-                                            );
+        if(mw_estaLogueado()){
+          $dataPlantilla = array();
+          $dataPlantilla["empresanombre"] = "";
+          $dataPlantilla["empresarepresentante"] = "";
+          $dataPlantilla["empresacomercial"] = "";
 
-        renderizar("listadoEmpresa", $dataPlantilla);
+            $dataPlantilla["tblempresa"] = array();
+            $dataPlantilla["tblempresa"] = obtenerEmpresa(
+            $dataPlantilla["empresanombre"] ,
+            $dataPlantilla["empresarepresentante"] ,
+            $dataPlantilla["empresacomercial"]
+                                              );
+
+            renderizar("listadoEmpresa", $dataPlantilla);
+        }else {
+          mw_redirectToLogin("page=login2");
+        }
       }
       run();
      ?>

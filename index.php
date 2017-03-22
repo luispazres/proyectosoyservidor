@@ -4,23 +4,16 @@
 
     require_once("libs/utilities.php");
 
-    $pageRequest = "home";
+    $pageRequest = "login2";
 
     if(isset($_GET["page"])){
         $pageRequest = $_GET["page"];
     }
 
-    //Incorporando los midlewares son codigos que se deben ejecutar
-    //Siempre
     require_once("controllers/verificar.mw.php");
     require_once("controllers/site.mw.php");
-    //Este switch se encarga de todo el enrutamiento
 
     switch($pageRequest){
-        case "home":
-            //llamar al controlador
-            require_once("controllers/home.control.php");
-            break;
         case "login2":
                   require_once("controllers/login2.control.php");
                   break;
@@ -78,8 +71,11 @@
       case "alertaContratos":
                   require_once("controllers/alertaContratos.control.php");
                   break;
-        default:
-            require_once("controllers/error.control.php");
+      case "dashboard":
+                  require_once("controllers/dashboard.control.php");
+                  break;
+      default:
+          require_once("controllers/error.control.php");
 
     }
 ?>

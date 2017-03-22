@@ -25,17 +25,10 @@
 
           $pswd=md5($pswd);
           if(obtenerPassword($userName,$pswd)){
-            mw_setEstaLogueado($userName, true);
+
+            mw_setEstaLogueado($userName, true, $usuario["rolCodigo"]);
             header("Location:index.php?page=listadoEmpresa");
-            session_start();
-            if(isset($_SESSION["user"])){
-             $user= $_SESSION["user"];
-            }
-              $user["userName"]=$usuario["nombre"];
-              $user["rol"]=$usuario["rolCodigo"];
-              $user["correo"]=$usuario["correo"];
-              $_SESSION["user"]=$user;
-              die();
+            die();
            }else{
             $errores[] = array("errmsg"=>"Credenciales Incorrectas");
           }
@@ -43,6 +36,11 @@
                  $errores[] = array("errmsg"=>"Credenciales Incorrectas");
                }
            }
+
+      if(isset($_GET["returnUrl"])){
+           $returnUrl = urldecode($_GET["returnUrl"]);
+      }
+
            $datos = array("txtUser" => $userName,
                           "returnUrl" => $returnUrl,
                           "mostrarErrores" => (count($errores)>0),
