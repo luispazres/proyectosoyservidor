@@ -71,7 +71,7 @@ foreach ($contratosVencidos as $key) {
   </div>
   </div>
   <div class='media-body'>
-  <strong class='notification-title'><a href='#'>Alerta Contrato: ".$key["ContratoCodigo"]."</a> El contrato de ".$key["ServicioNombre"]." de la empresa ".$key["EmpresaNombre"]." esta vencido<a href='#''></a></strong>
+  <strong class='notification-title'>Alerta Contrato: ".$key["ContratoCodigo"]." El contrato de ".$key["ServicioNombre"]." de la empresa ".$key["EmpresaNombre"]." esta vencido.</strong>
 
   <div class='notification-meta'>
    <small >Venció: ".$key["ContratoFechaFinal"]."</small>
@@ -92,7 +92,7 @@ foreach ($contratosVencidos as $key) {
     </div>
     </div>
     <div class='media-body'>
-    <strong class='notification-title'><a href='#'>Alerta Contrato: ".$key["ContratoCodigo"]."</a> El contrato de ".$key["ServicioNombre"]." de la empresa ".$key["EmpresaNombre"]."<a href='#''></a></strong>
+    <strong class='notification-title'>Alerta Contrato: ".$key["ContratoCodigo"]." El contrato de ".$key["ServicioNombre"]." de la empresa ".$key["EmpresaNombre"]."</strong>
 
     <div class='notification-meta'>
      <small >Vence: ".$key["ContratoFechaFinal"]."</small>
@@ -223,13 +223,39 @@ foreach ($contratosVencidos as $key) {
 
     }
 
-
-insertarAlerta($alert);
-
-
+  insertarAlerta($alert);
 }
 
-if ($Session["rol"]==1) {
+/*if ($Session["rol"]==1) {*/
+  $navbar="<nav class='navbar navbar-default'>
+<div class='container-fluid'>
+  <div class='navbar-header'>
+    <a class='navbar-brand' href='#'>
+      <img width='15%' alt='Brand' src='https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAXaAAAAJDQ4YTA0ZWNhLWJjMDItNDdiOS05MjI3LTUzNjYyMGJlODE1Nw.png'>
+    </a>
+    <div class='btn-group dropdown dropdown-notifications sw-open'>
+    <button class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
+    <i data-count='".$cont."' class='glyphicon glyphicon-bell notification-icon'></i>
+    <span class='caret'></span>
+    </button>
+
+    <div class='dropdown-container'>
+    <div class='dropdown-toolbar'>
+    <div class='dropdown-toolbar-actions'>
+    <a href='index.php?page=alertaContratos'><i class='glyphicon glyphicon-search'></i> View All</a>
+    </div>
+    <h3 class='dropdown-toolbar-title'>Recent Notifications  (".$cont.")</h3>
+    </div><!-- /dropdown-toolbar -->
+
+    <ul class='dropdown-menu notifications'>
+  ".$contratosHeader."
+    </ul>
+    </div>
+    </div>
+  </div>
+</div>
+</nav>";
+/*}else {
   $navbar="<nav class='navbar navbar-default'>
 <div class='container-fluid'>
   <div class='navbar-header'>
@@ -258,110 +284,8 @@ if ($Session["rol"]==1) {
   </div>
 </div>
 </nav>";
-}else {
-  $navbar="<nav class='navbar navbar-default'>
-<div class='container-fluid'>
-  <div class='navbar-header'>
-    <a class='navbar-brand' href='#'>
-      <img width='15%' alt='Brand' src='https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAXaAAAAJDQ4YTA0ZWNhLWJjMDItNDdiOS05MjI3LTUzNjYyMGJlODE1Nw.png'>
-    </a>
-    <div class='btn-group dropdown dropdown-notifications sw-open'>
-    <button class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
-    <i data-count='".$cont."' class='glyphicon glyphicon-bell notification-icon'></i>
-    <span class='caret'></span>
-    </button>
+}*/
 
-    <div class='dropdown-container'>
-    <div class='dropdown-toolbar'>
-    <div class='dropdown-toolbar-actions'>
-    <a href='#''><i class='glyphicon glyphicon-search'></i> View All</a>
-    </div>
-    <h3 class='dropdown-toolbar-title'>Recent Notifications  (".$cont.")</h3>
-    </div><!-- /dropdown-toolbar -->
-
-    <ul class='dropdown-menu notifications'>
-  ".$contratosHeader."
-    </ul>
-    </div>
-    </div>
-  </div>
-</div>
-</nav>";
-}
-
-    $header="<div class='btn-group dropdown dropdown-notifications sw-open'>
-<button class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
-<i data-count='2' class='glyphicon glyphicon-bell notification-icon'></i>
-<span class='caret'></span>
-</button>
-
-<div class='dropdown-container'>
-<div class='dropdown-toolbar'>
-  <div class='dropdown-toolbar-actions'>
-    <a href='#''><i class='glyphicon glyphicon-search'></i> View All</a>
-  </div>
-  <h3 class='dropdown-toolbar-title'>Recent Notifications  (3)</h3>
-</div><!-- /dropdown-toolbar -->
-
-<ul class='dropdown-menu notifications'>
-  <li class='notification'>
-<div class='media'>
- <div class='media-left'>
-   <div class='media-object'>
-     <img data-src='holder.js/50x50?bg=cccccc' class='img-circle' alt='Name'>
-   </div>
- </div>
- <div class='media-body'>
-   <strong class='notification-title'><a href='#'>Dave Lister</a> commented on <a href='#'DWARF-13 - Maintenance</a></strong>
-   <p class='notification-desc'>I totally don't wanna do it. Rimmer can do it.</p>
-
-   <div class='notification-meta'>
-     <small class='timestamp'>27. 11. 2015, 15:00</small>
-   </div>
- </div>
-</div>
-</li>
-
-<li class='notification'>
-<div class='media'>
- <div class='media-left'>
-   <div class='media-object'>
-     <img data-src='holder.js/50x50?bg=cccccc' class='img-circle' alt='Name'>
-   </div>
- </div>
- <div class='media-body'>
-   <strong class='notification-title'><a href='#'>Nikola Tesla</a> resolved <a href='#'>T-14 - Awesome stuff</a></strong>
-
-   <p class='notification-desc'>Resolution: Fixed, Work log: 4h</p>
-
-   <div class='notification-meta'>
-     <small class='timestamp'>27. 10. 2015, 08:00</small>
-   </div>
-
- </div>
-</div>
-</li>
-
-<li class='notification'>
-<div class='media'>
- <div class='media-left'>
-   <div class='media-object'>
-     <img data-src='holder.js/50x50?bg=cccccc' class='img-circle' alt='Name'>
-   </div>
- </div>
- <div class='media-body'>
-   <strong class='notification-title'><a href='#'>James Bond</a> resolved <a href='#''>B-007 - Desolve Spectre organization</a></strong>
-
-   <div class='notification-meta'>
-     <small class='timestamp'>1. 9. 2015, 08:00</small>
-   </div>
-
- </div>
-</div>
-</li>
-</ul>
-</div>
-</div>";
 
   //  print_r($contratosVencidos);
     addToContext("page_header",$navbar);
